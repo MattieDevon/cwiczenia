@@ -9,20 +9,20 @@ function log(){
 }
 
 
-flagi=$(getopt -o hdl: -- "$@")
+flagi=$(getopt -o hdl: --long help,date,log: -- "$@")
 
 eval set -- "$flagi"
 while [ : ]; do
   case "$1" in
-    -d)
+    -d | --date)
         date
         shift
         ;;
-    -h)
+    -h | --help)
         printf "-d\n -l\n-h"
         shift
         ;;
-    -l)
+    -l | --log)
 		
         log "$2"
         shift 2
