@@ -19,7 +19,7 @@ while [ : ]; do
         shift
         ;;
     -h)
-        echo "uzupełnij to"
+        printf "-d\n -l\n-h"
         shift
         ;;
     -l)
