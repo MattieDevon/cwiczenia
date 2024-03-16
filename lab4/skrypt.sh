@@ -1,6 +1,15 @@
 #!/bin/bash
 
-flagi=$(getopt -o hd -- "$@")
+
+function log(){
+	for ((i=1;i<=$1;i++))
+	do
+	printf "Nazwa skryptu: $0\nLog Numer: $i\n$(date)" > log$i.txt
+	done
+}
+
+
+flagi=$(getopt -o hdl: -- "$@")
 
 eval set -- "$flagi"
 while [ : ]; do
@@ -10,8 +19,13 @@ while [ : ]; do
         shift
         ;;
     -h)
-        echo "uzupełnij to"
+        printf "-d\n -l\n-h"
         shift
+        ;;
+    -l)
+		
+        log "$2"
+        shift 2
         ;;
     --) shift; 
         break 
