@@ -9,7 +9,7 @@ function log(){
 }
 
 
-flagi=$(getopt -o hdl: --long help,date,log: -- "$@")
+flagi=$(getopt -o hdl: --long help,date,log:,init -- "$@")
 
 eval set -- "$flagi"
 while [ : ]; do
@@ -19,7 +19,7 @@ while [ : ]; do
         shift
         ;;
     -h | --help)
-        printf "-d\n -l\n-h"
+        printf "-d --date\n-l --long\n-h --help"
         shift
         ;;
     -l | --log)
@@ -27,6 +27,11 @@ while [ : ]; do
         log "$2"
         shift 2
         ;;
+	--init)
+		cp "$BASH_SOURCE" "$(pwd)/script.sh"
+		
+		shift
+		;;
     --) shift; 
         break 
         ;;
